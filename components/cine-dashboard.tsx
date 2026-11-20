@@ -16,6 +16,7 @@ const HERO_SLIDES = [
   { src: '/images/noir-film-slide.png', alt: 'Detective bajo la lluvia en una calle nocturna de cine negro', genre: 'Film noir' },
   { src: '/images/scifi-film-slide.png', alt: 'Astronauta contempla un planeta rojo desde una estación espacial', genre: 'Ciencia ficción' },
   { src: '/images/adventure-film-slide.png', alt: 'Carretera de montaña al anochecer con un viajero en la distancia', genre: 'Aventura' },
+  { src: '/images/family-premiere-slide.svg', alt: 'Niños y familias en la alfombra roja de un estreno de cine', genre: 'Estreno familiar' },
 ]
 const date = (value: string) => new Intl.DateTimeFormat('es', { day: 'numeric', month: 'short', year: 'numeric' }).format(new Date(value))
 
@@ -59,7 +60,7 @@ function Home({ data, navigate }: { data: Data; navigate: (section: Section) => 
   const [hovered, setHovered] = useState(false)
   useEffect(() => {
     if (paused || hovered || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
-    const timer = window.setInterval(() => setActiveSlide(current => (current + 1) % HERO_SLIDES.length), 6000)
+    const timer = window.setInterval(() => setActiveSlide(current => (current + 1) % HERO_SLIDES.length), 4000)
     return () => window.clearInterval(timer)
   }, [paused, hovered])
   const moveSlide = (direction: number) => setActiveSlide(current => (current + direction + HERO_SLIDES.length) % HERO_SLIDES.length)
